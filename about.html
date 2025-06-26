@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>About | Tracy Lara</title>
+  <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@400;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+  <header>
+    <nav class="navbar">
+      <img src="logo.png" alt="Logo" class="logo" />
+      <ul class="nav-links">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="#" class="active">About</a></li>
+        <li><a href="projects.html">Projects</a></li>
+        <li><a href="contacts.html">Let's Connect!</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main>
+    <section class="about">
+      <h1>About Me!</h1>
+      <p class="description">
+        I am an enthusiastic web developer with a few experience of 2 years in website & product design. With years of experience in graphic and web design I have mastered the skills of understanding client requirements according to the latest trends.
+      </p>
+    </section>
+
+    <section class="skills">
+      <h2>Technologies Expertise</h2>
+
+      <div class="skill">
+        <label><i class="fab fa-html5"></i><span>HTML & CSS</span></label>
+        <div class="bar html-css"></div>
+      </div>
+
+      <div class="skill">
+        <label><i class="fas fa-wind"></i><span>Tailwind CSS</span></label>
+        <div class="bar tailwind"></div>
+      </div>
+
+      <div class="skill">
+        <label><i class="fab fa-react"></i><span>React JSX</span></label>
+        <div class="bar react"></div>
+      </div>
+
+      <div class="skill">
+        <label><i class="fab fa-js-square"></i><span>JavaScript</span></label>
+        <div class="bar javascript"></div>
+      </div>
+
+      <div class="skill">
+        <label><i class="fas fa-paint-brush"></i><span>Adobe Photoshop</span></label>
+        <div class="bar photoshop"></div>
+      </div>
+    </section>
+  </main>
+
+  <button id="modeToggle"
+    class="fixed top-5 right-5 z-50 bg-white dark:bg-[#2a211d] text-[#4e342e] dark:text-[#ffeb99] p-3 rounded-full shadow-lg transition hover:scale-105"
+    aria-label="Toggle dark mode">
+    <i id="modeIcon" class="fas fa-moon"></i>
+  </button>
+
+  <script>
+    const bars = document.querySelectorAll('.bar');
+    const options = { threshold: 0.5 };
+
+    const revealBar = (bar, width) => {
+      bar.style.width = width;
+    };
+
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          if (entry.target.classList.contains('html-css')) revealBar(entry.target, '85%');
+          if (entry.target.classList.contains('tailwind')) revealBar(entry.target, '80%');
+          if (entry.target.classList.contains('react')) revealBar(entry.target, '80%');
+          if (entry.target.classList.contains('javascript')) revealBar(entry.target, '75%');
+          if (entry.target.classList.contains('photoshop')) revealBar(entry.target, '70%');
+        }
+      });
+    }, options);
+
+    bars.forEach(bar => {
+      bar.style.width = '0';
+      observer.observe(bar);
+    });
+
+    const toggleBtn = document.getElementById('modeToggle');
+    const modeIcon = document.getElementById('modeIcon');
+    const savedMode = localStorage.getItem('theme');
+    const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+
+    const applyTheme = (dark) => {
+      document.body.classList.toggle('dark', dark);
+      modeIcon.className = dark ? 'fas fa-sun' : 'fas fa-moon';
+    };
+
+    applyTheme(savedMode === 'dark' || (!savedMode && prefersDark));
+
+    toggleBtn.addEventListener('click', () => {
+      const isDark = document.body.classList.toggle('dark');
+      localStorage.setItem('theme', isDark ? 'dark' : 'light');
+      modeIcon.className = isDark ? 'fas fa-sun' : 'fas fa-moon';
+    });
+  </script>
+
+</body>
+</html>

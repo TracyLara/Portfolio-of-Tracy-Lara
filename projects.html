@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>My Projects | Tracy Lara</title>
+
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@400;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+  <link rel="stylesheet" href="style.css" />
+</head>
+
+<body class="font-[Quicksand] transition-colors duration-500">
+
+  <button id="modeToggle" aria-label="Toggle Dark Mode">
+    <i class="fas fa-moon"></i>
+  </button>
+
+  <nav class="flex justify-between items-center p-6 md:px-16">
+    <img src="logo.png" alt="Logo" class="h-16" />
+    <ul class="flex gap-6 font-semibold text-lg nav-links">
+      <li><a href="index.html">Home</a></li>
+      <li><a href="about.html">About</a></li>
+      <li><a href="projects.html" class="active">Projects</a></li>
+      <li><a href="contacts.html">Let's Connect!</a></li>
+    </ul>
+  </nav>
+
+   <main class="max-w-6xl mx-auto px-4 py-10">
+    <h1 class="text-4xl font-bold text-center text-pink-500 mb-12">My Projects</h1>
+    <div class="grid md:grid-cols-3 gap-8">
+
+      <!-- Project 1 -->
+      <div class="glow-frame p-4">
+        <img src="Screenshot (627).png" alt="Project 1" class="rounded-lg mb-4 w-full h-48 object-cover">
+        <h2 class="text-xl font-bold mb-2">Tracy's Pink Art Gallery</h2>
+        <p class="text-sm mb-2">A curated collection of my artworks across different fields.</p>
+        <p class="text-xs italic tech-text mb-3">Tech Used: PhotoShop, HTML, CSS, JavaScript</p>
+        <button onclick="openModal(1)" class="project-button bg-[#6d4c41] text-white px-4 py-2 rounded hover:bg-pink-300 hover:text-[#4e342e] transition">View Details</button>
+      </div>
+
+      <!-- Project 2 -->
+      <div class="glow-frame p-4">
+        <img src="Screenshot (632).png" alt="Project 2" class="rounded-lg mb-4 w-full h-48 object-cover">
+        <h2 class="text-xl font-bold mb-2">This or That Game</h2>
+        <p class="text-sm mb-2">A fun and interactive “this or that” game.</p>
+        <p class="text-xs italic tech-text mb-3">Tech Used: HTML, CSS, JavaScript</p>
+        <button onclick="openModal(2)" class="project-button bg-[#6d4c41] text-white px-4 py-2 rounded hover:bg-pink-300 hover:text-[#4e342e] transition">View Details</button>
+      </div>
+
+      <!-- Project 3 -->
+      <div class="glow-frame p-4">
+        <img src="Screenshot (630).png" alt="Project 3" class="rounded-lg mb-4 w-full h-48 object-cover">
+        <h2 class="text-xl font-bold mb-2">Lacy Music Player</h2>
+        <p class="text-sm mb-2">A personal music player and web journal.</p>
+        <p class="text-xs italic tech-text mb-3">Tech Used: Figma, HTML, CSS, JavaScript</p>
+        <button onclick="openModal(3)" class="project-button bg-[#6d4c41] text-white px-4 py-2 rounded hover:bg-pink-300 hover:text-[#4e342e] transition">View Details</button>
+      </div>
+    </div>
+  </main>
+
+  <!-- Modals -->
+  <div id="projectModal1" class="modal hidden">
+    <div class="modal-content">
+      <button onclick="closeModal(1)" class="close">&times;</button>
+      <h3>Tracy's Pink Art Gallery</h3>
+      <img src="Screenshot (635).png" alt="Detail" />
+      <p>This simple art gallery showcases my skills in various art styles like digital illustration, crafts, and more.</p>
+      <a href="https://tracylara.github.io/art-gallery-of-tracy/" target="_blank">Click to view Project!</a>
+    </div>
+  </div>
+
+  <div id="projectModal2" class="modal hidden">
+    <div class="modal-content">
+      <button onclick="closeModal(2)" class="close">&times;</button>
+      <h3>This or That Game</h3>
+      <img src="Screenshot (636).png" alt="Detail" />
+      <p>A pastel game where users pick options and get cute pixel pastry results. Even choose a beverage at the end!</p>
+      <a href="https://tracylara.github.io/This-or-that-food-edition/" target="_blank">Click to view Project!</a>
+    </div>
+  </div>
+
+  <div id="projectModal3" class="modal hidden">
+    <div class="modal-content">
+      <button onclick="closeModal(3)" class="close">&times;</button>
+      <h3>Lacy Music Player</h3>
+      <img src="Screenshot (637).png" alt="Detail" />
+      <p>Custom player, vinyl collection, lyrics scroller, artist showcase—all in a vintage, dreamy vibe.</p>
+      <a href="https://tracylara.github.io/TracyLara-Music-Gallery/" target="_blank">Click to view Project!</a>
+    </div>
+  </div>
+
+  <script>
+    function openModal(id) {
+      const modal = document.getElementById(`projectModal${id}`);
+      if (modal) modal.classList.remove('hidden');
+    }
+
+    function closeModal(id) {
+      const modal = document.getElementById(`projectModal${id}`);
+      if (modal) modal.classList.add('hidden');
+    }
+
+    const toggle = document.getElementById('modeToggle');
+    const icon = toggle.querySelector('i');
+
+    toggle.addEventListener('click', () => {
+      document.body.classList.toggle('dark');
+      icon.classList.toggle('fa-moon');
+      icon.classList.toggle('fa-sun');
+    });
+  </script>
+
+</body>
+</html>
